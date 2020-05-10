@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "jsx": "preserve",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["src"],
+      "@/hoc/*": ["src/hoc/*"],
+      "@/type/*": ["src/type/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/components": ["src/components"],
+      "@/components/*": ["src/components/*"],
+      "@/module/*": ["src/module/*"],
+      "@/service/*": ["src/service/*"],
+      "@/assets/*": ["src/assets/*"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": ["./src/", "Node"],
+  "exclude": ["node_modules"]
+}
