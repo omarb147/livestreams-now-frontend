@@ -20,6 +20,8 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/components": ["src/components"],
       "@/components/*": ["src/components/*"],
+      "@/pages": ["src/pages/"],
+      "@/pages/*": ["src/pages/*"],
       "@/module/*": ["src/module/*"],
       "@/service/*": ["src/service/*"],
       "@/assets/*": ["src/assets/*"]

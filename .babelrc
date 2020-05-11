@@ -15,6 +15,7 @@
           "@/hoc": "./src/hoc",
           "@/type": "./src/type",
           "@/components": "./src/components",
+          "@/pages": "./src/pages",
           "@/service": "./src/service",
           "@/module": "./src/module",
           "@/hooks": "./src/hooks",

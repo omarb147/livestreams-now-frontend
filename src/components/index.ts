@@ -1,3 +1,3 @@
-import EmptyComponent from './EmptyComponent/EmptyComponent';
+import Header from './Header/Header';
 
-export { EmptyComponent };
+export { Header };

@@ -10,6 +10,7 @@
         "map": [
           ["@/type", "./src/type"],
           ["@/hoc", "./src/hoc"],
+          ["@/pages", "./src/pages"],
           ["@/hooks", "./src/hooks"],
           ["@/components", "./src/components"],
           ["@/module", "./src/module"],

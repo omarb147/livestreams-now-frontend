@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from '@/module/store';
 
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import App from './router';
 
 const GlobalStyle = createGlobalStyle`
@@ -11,26 +11,18 @@ const GlobalStyle = createGlobalStyle`
   height:100%;
   margin: 0;
   position:relative;
-  font-family: 'Quicksand';
+  font-family: 'Roboto';
+  font-weight: 400;
   }
   * {
     box-sizing: border-box;
   }
 `;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-`;
-
 ReactDOM.render(
   <Provider store={store}>
     <GlobalStyle />
-    <Container>
-      <App />
-    </Container>
+    <App />
   </Provider>,
   document.querySelector('#root'),
 );
