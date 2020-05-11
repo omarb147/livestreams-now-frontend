@@ -7,7 +7,7 @@
     "bundle": "webpack",
     "lint": "eslint --fix --ext js,ts,tsx src/",
     "test": "jest",
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production"
   },
   "dependencies": {
