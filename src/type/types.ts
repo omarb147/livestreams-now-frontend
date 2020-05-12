@@ -1,8 +1,18 @@
-export interface IExampleSubState {
+export interface ILivestreamState {
+  livestreams: ILivestream[];
+  loading: boolean;
+  error: boolean;
+}
+
+export interface ILivestream {
   id: string;
-  otherVar: string;
+  title: string;
+  description?: string;
+  date: string;
+  livestreamUrl: string;
+  ImageUrl?: string;
 }
 
 export interface IState {
-  exampleSubState: IExampleSubState;
+  livestreamState: ILivestreamState;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from '@/module/store';
+import configureStore from '@/module/store';
 
 import { createGlobalStyle } from 'styled-components';
 import App from './router';
@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
-
+const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <GlobalStyle />

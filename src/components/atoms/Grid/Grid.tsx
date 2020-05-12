@@ -7,5 +7,5 @@ export default styled.div`
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 2rem;
-  padding: 0 5em;
+  padding: 2rem 5em;
 `;

@@ -1,3 +1,3 @@
-import Header from '../atoms/Header/Header';
+import CardGrid from './CardGrid/CardGrid';
 
-export { Header };
+export { CardGrid };

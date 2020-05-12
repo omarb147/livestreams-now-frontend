@@ -1,10 +1,26 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
+import livestreamReducer from './livestream/reducer';
 
-import exampleSubStateReducer from './exampleSubState/reducer';
-
+export const onError = (error: any) => {
+  console.error(error); // eslint-disable-line no-console
+  throw error;
+};
 const rootReducer = combineReducers({
-  exampleSubState: exampleSubStateReducer,
+  livestreamState: livestreamReducer,
 });
 
-export default createStore(rootReducer, composeWithDevTools());
+export const sagaMiddleware = createSagaMiddleware({
+  onError,
+});
+
+export default function configureStore(initialState = {}) {
+  const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
+  const store = createStore(rootReducer, initialState, enhancer);
+
+  sagaMiddleware.run(rootSaga);
+
+  return store;
+}

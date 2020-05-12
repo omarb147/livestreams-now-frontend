@@ -11,6 +11,8 @@ const Container = styled.div`
   font-size: 2rem;
 `;
 
-const Header = () => <Container>LIVESTREAMS NOW</Container>;
+const Header: React.FunctionComponent = ({ children }) => (
+  <Container>{children}</Container>
+);
 
 export default Header;

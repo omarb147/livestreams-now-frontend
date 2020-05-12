@@ -5,7 +5,7 @@ import { Header } from '@/components/atoms';
 
 const App = () => (
   <Router>
-    <Header />
+    <Header>LIVESTREAMS NOW</Header>
     <Switch>
       <Route path="/:secondPage" exact component={Homepage} />
       <Route path="/" exact component={Homepage} />
