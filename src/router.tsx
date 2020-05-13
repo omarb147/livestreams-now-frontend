@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { EmptyPage } from '@/components/Pages';
+import { Homepage } from '@/pages';
+import { Header } from '@/components/atoms';
 
 const App = () => (
   <Router>
+    <Header>LIVESTREAMS NOW</Header>
     <Switch>
-      <Route path="/:secondPage" exact component={EmptyPage} />
-      <Route path="/" exact component={EmptyPage} />
+      <Route path="/:secondPage" exact component={Homepage} />
+      <Route path="/" exact component={Homepage} />
     </Switch>
   </Router>
 );

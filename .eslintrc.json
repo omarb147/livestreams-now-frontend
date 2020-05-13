@@ -10,6 +10,7 @@
         "map": [
           ["@/type", "./src/type"],
           ["@/hoc", "./src/hoc"],
+          ["@/pages", "./src/pages"],
           ["@/hooks", "./src/hooks"],
           ["@/components", "./src/components"],
           ["@/module", "./src/module"],
@@ -42,6 +43,8 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "import/no-extraneous-dependencies": 0,
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": 0,
     "max-len": 0,
     "import/prefer-default-export": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
@@ -50,7 +53,8 @@
       "ignorePackages",
       {
         "ts": "never",
-        "tsx": "never"
+        "tsx": "never",
+        "js": "never"
       }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
