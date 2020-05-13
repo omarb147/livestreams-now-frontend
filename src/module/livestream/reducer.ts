@@ -1,11 +1,16 @@
 import { getType } from 'typesafe-actions';
 import { ILivestreamState } from '@/type/types';
-import { fetchLivestreams, livestreamsActionTypes } from './actions';
+import {
+  fetchLivestreams,
+  searchlivestreams,
+  livestreamsActionTypes,
+} from './actions';
 
 const initialState: ILivestreamState = {
   livestreams: [],
   loading: false,
   error: false,
+  searchQuery: '',
 };
 
 export default (
@@ -19,17 +24,22 @@ export default (
         loading: true,
         error: false,
       };
+    case getType(fetchLivestreams.failure):
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
     case getType(fetchLivestreams.success):
       return {
         ...state,
         livestreams: action.payload.livestreams,
         loading: false,
       };
-    case getType(fetchLivestreams.failure):
+    case getType(searchlivestreams):
       return {
         ...state,
-        loading: false,
-        error: true,
+        searchQuery: action.payload.query,
       };
 
     default: {

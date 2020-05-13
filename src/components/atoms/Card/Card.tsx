@@ -49,7 +49,6 @@ const Card: React.FunctionComponent<ILivestream> = (props) => {
         <div className="moreDetail">
           <div>{date}</div>
           <a href={livestreamUrl}>
-            {console.log(livestreamUrl)}
             <div>Link to Stream</div>
           </a>
         </div>

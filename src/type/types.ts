@@ -2,6 +2,7 @@ export interface ILivestreamState {
   livestreams: ILivestream[];
   loading: boolean;
   error: boolean;
+  searchQuery: string;
 }
 
 export interface ILivestream {
@@ -10,7 +11,7 @@ export interface ILivestream {
   description?: string;
   date: string;
   livestreamUrl: string;
-  ImageUrl?: string;
+  imageUrl?: string;
 }
 
 export interface IState {

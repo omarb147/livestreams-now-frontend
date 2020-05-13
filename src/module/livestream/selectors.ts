@@ -6,8 +6,11 @@ export default class LivestreamSelector extends SelectorClass {
 
   useLivestreamState = (): ILivestreamState => this.useSelector((state) => state.livestreamState);
 
-  useFilteredLivestreams = (filterParam: string): ILivestream[] | [] => this.useSelector((state) => state.livestreamState.livestreams.filter(
-    (stream) => stream.description?.includes(filterParam)
-          || stream.title.includes(filterParam),
-  ));
+  useFilteredLivestreams = (query: string): ILivestream[] | [] => this.useSelector((state) => {
+    const upperCaseQuery = query.toUpperCase();
+    return state.livestreamState.livestreams.filter(
+      (stream) => stream.description?.toUpperCase().includes(upperCaseQuery)
+          || stream.title.toUpperCase().includes(upperCaseQuery),
+    );
+  });
 }

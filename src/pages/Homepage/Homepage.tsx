@@ -5,10 +5,21 @@ import LivestreamSelectorClass from '@/module/livestream/selectors';
 import { Section, SearchInput, LineBreak } from '@/components/atoms';
 import { CardGrid } from '@/components/molecules';
 
+const onSearchChangeHandler = (
+  event: React.ChangeEvent<HTMLInputElement>,
+  actionDispatch: LivestreamDispatchClass,
+): void => {
+  const { value } = event.currentTarget;
+  actionDispatch.searchlivestreams(value);
+};
+
 const Homepage = () => {
   const LivestreamsDispatch = new LivestreamDispatchClass();
   const LivestreamSelector = new LivestreamSelectorClass();
-  const livestreamState = LivestreamSelector.useLivestreamState();
+  const { searchQuery } = LivestreamSelector.useLivestreamState();
+  const filteredLiveStreams = LivestreamSelector.useFilteredLivestreams(
+    searchQuery,
+  );
 
   useEffect(() => {
     LivestreamsDispatch.fetchLivestreams();
@@ -22,20 +33,26 @@ const Homepage = () => {
       <Section backgroundColor="lightgray">
         <h2>WHAT&apos;S ON TODAY?</h2>
       </Section>
-      <Section backgroundColor="lightgray">
-        {/* <SquareImageBox />
-      <SquareImageBox />
-      <SquareImageBox />
-      <SquareImageBox />
-      <SquareImageBox /> */}
-      </Section>
       <Section>
-        <SearchInput />
+        <SearchInput
+          placeholder="search livestreams"
+          onChange={(e) => {
+            onSearchChangeHandler(e, LivestreamsDispatch);
+          }}
+        />
       </Section>
       <Section>
         <LineBreak color="lightgray" />
       </Section>
-      <CardGrid data={livestreamState.livestreams} />
+      {searchQuery && (
+        <Section>
+          <h1>
+            SEARCH RESULTS FOR :
+            {searchQuery.toUpperCase()}
+          </h1>
+        </Section>
+      )}
+      <CardGrid data={filteredLiveStreams} />
     </div>
   );
 };
