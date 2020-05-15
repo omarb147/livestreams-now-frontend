@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import LivestreamDispatchClass from '@/module/livestream/dispatch';
 import LivestreamSelectorClass from '@/module/livestream/selectors';
-
+// import Iframe from 'react-iframe';
 import { Section, SearchInput, LineBreak } from '@/components/atoms';
-import { CardGrid } from '@/components/molecules';
+import { CardGrid, ListView, CollapseView } from '@/components/molecules';
+import { ISortedLiveStreams } from '@/type/types';
 
 const onSearchChangeHandler = (
   event: React.ChangeEvent<HTMLInputElement>,
@@ -13,11 +14,23 @@ const onSearchChangeHandler = (
   actionDispatch.searchlivestreams(value);
 };
 
+const generateLivestreamsList = (data: ISortedLiveStreams) => Object.keys(data)
+// @ts-ignore
+  .sort((firstDate, secondDate) => new Date(firstDate) - new Date(secondDate))
+  .map((key) => ({
+    component: <ListView title={key} data={data[key]} />,
+    title: key,
+    count:data[key].length
+  }));
+
 const Homepage = () => {
   const LivestreamsDispatch = new LivestreamDispatchClass();
   const LivestreamSelector = new LivestreamSelectorClass();
   const { searchQuery } = LivestreamSelector.useLivestreamState();
-  const filteredLiveStreams = LivestreamSelector.useFilteredLivestreams(
+  // const filteredLiveStreams = LivestreamSelector.useFilteredLivestreams(
+  //   searchQuery,
+  // );
+  const sortedLivestreams = LivestreamSelector.useFilteredLivestreamsByDate(
     searchQuery,
   );
 
@@ -52,7 +65,11 @@ const Homepage = () => {
           </h1>
         </Section>
       )}
-      <CardGrid data={filteredLiveStreams} />
+      <Section>
+        {/* <CardGrid data={filteredLiveStreams} /> */}
+        <CollapseView data={generateLivestreamsList(sortedLivestreams)} />
+        {/* {generateLivestreamsList(sortedLivestreams)} */}
+      </Section>
     </div>
   );
 };

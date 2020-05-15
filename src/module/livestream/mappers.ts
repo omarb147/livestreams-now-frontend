@@ -2,9 +2,11 @@ import { ILivestream } from '@/type/types';
 
 export const liveStreamsBackToFrontMapper = (livestreams: any): ILivestream[] => livestreams.map((livestream: any) => ({
   id: livestream.id,
-  livestreamUrl: livestream.linkToStream || undefined,
-  title: livestream.artist || undefined,
+  livestreamUrl: livestream.livestreamUrl || undefined,
+  title: livestream.title,
   description: livestream.description || undefined,
-  date: livestream.date || undefined,
-  imageUrl: undefined,
+  date: new Date(livestream.date).toDateString() || undefined,
+  time: livestream.time || undefined,
+  imageUrl: livestream.imageUrl || undefined,
+  extra: livestream.extra || null,
 }));
