@@ -3,7 +3,7 @@ import LivestreamDispatchClass from '@/module/livestream/dispatch';
 import LivestreamSelectorClass from '@/module/livestream/selectors';
 // import Iframe from 'react-iframe';
 import { Section, SearchInput, LineBreak } from '@/components/atoms';
-import { CardGrid, ListView, CollapseView } from '@/components/molecules';
+import { ListView, CollapseView } from '@/components/molecules';
 import { ISortedLiveStreams } from '@/type/types';
 
 const onSearchChangeHandler = (
@@ -20,7 +20,7 @@ const generateLivestreamsList = (data: ISortedLiveStreams) => Object.keys(data)
   .map((key) => ({
     component: <ListView title={key} data={data[key]} />,
     title: key,
-    count:data[key].length
+    count: data[key].length,
   }));
 
 const Homepage = () => {

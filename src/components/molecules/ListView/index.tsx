@@ -74,7 +74,7 @@ const Image: React.FunctionComponent<{ imageUrl?: string }> = ({
   <Imagebox>{imageUrl ? <img src={imageUrl} alt="photo123" /> : null}</Imagebox>
 );
 
-const ListView: React.FunctionComponent<IListViewProps> = ({ data, title }) => (
+const ListView: React.FunctionComponent<IListViewProps> = ({ data }) => (
   // const [itemImageisOpen, openItemImage] = useState<string | undefined>(
   //   undefined,
   // );
@@ -100,7 +100,7 @@ const ListView: React.FunctionComponent<IListViewProps> = ({ data, title }) => (
         <List.Item
           key={item.id}
           id={item.id}
-          // onClick={(e) => onClickHandler(e, item.id)}
+          // on'Click={(e) => onClickHandler(e, item.id)}'
           actions={[
             <a href={item.livestreamUrl}>
               <IconText
